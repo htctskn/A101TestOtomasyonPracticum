@@ -74,7 +74,7 @@ public class TestCase {
             .sendKeys(Keys.TAB)
             .sendKeys(faker.name().lastName())
             .sendKeys(Keys.TAB)
-            .sendKeys(faker.phoneNumber().cellPhone()).perform();
+            .sendKeys(ConfigReader.getProperty("telNo")).perform();
 
     Thread.sleep(2000);
     Select select=new Select(a101.ilDropDownElement);
