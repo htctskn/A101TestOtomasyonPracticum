@@ -83,13 +83,11 @@ public class A101 {
     @FindBy(xpath = "(//span[.='Siparişi Tamamla'])[2]")
     public WebElement SiparişiTamamlaButton;
 
-    @FindBy(xpath = "(//span[.='Siparişi Tamamla'])[2]")
+    @FindBy(xpath = "(//div[@class='section-hero'])[5]")
     public WebElement masterPassIleOdemeText;
 
 
 
-    //@FindBy(xpath = "//span[.='2. ÖDEME SEÇENEKLERİ']")
-    //public WebElement odemeSecenekleriText;
 
 
 

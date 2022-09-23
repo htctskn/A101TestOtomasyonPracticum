@@ -100,7 +100,7 @@ public class TestCase {
 
     a101.SiparişiTamamlaButton.click();
 
-    a101.masterPassIleOdemeText.isDisplayed();
+    Assert.assertTrue(a101.masterPassIleOdemeText.isDisplayed());
 
 
 
