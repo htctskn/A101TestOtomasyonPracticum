@@ -98,7 +98,9 @@ public class TestCase {
    // a101.scottyKargoRadioButton.click();
     a101.kaydetVeDevamEtButton.click();
 
-    Assert.assertTrue(a101.odemeSecenekleriText.isDisplayed());
+    a101.SiparişiTamamlaButton.click();
+
+    a101.masterPassIleOdemeText.isDisplayed();
 
 
 

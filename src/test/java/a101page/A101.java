@@ -80,8 +80,16 @@ public class A101 {
     @FindBy(xpath = "//button[@class='button block green js-proceed-button']")
     public WebElement kaydetVeDevamEtButton;
 
-    @FindBy(xpath = "//span[.='2. ÖDEME SEÇENEKLERİ']")
-    public WebElement odemeSecenekleriText;
+    @FindBy(xpath = "(//span[.='Siparişi Tamamla'])[2]")
+    public WebElement SiparişiTamamlaButton;
+
+    @FindBy(xpath = "(//span[.='Siparişi Tamamla'])[2]")
+    public WebElement masterPassIleOdemeText;
+
+
+
+    //@FindBy(xpath = "//span[.='2. ÖDEME SEÇENEKLERİ']")
+    //public WebElement odemeSecenekleriText;
 
 
 
