@@ -1,7 +1,14 @@
 package testcase;
 
 import a101page.A101;
+import com.github.javafaker.Faker;
+import org.bouncycastle.crypto.modes.KCCMBlockCipher;
+import org.checkerframework.checker.units.qual.K;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -31,7 +38,73 @@ public class TestCase {
     a101.kadinIcGiyimBolumu.click();
     Thread.sleep(2000);
     a101.dizAltiCorapBolumu.click();
-   // List<WebElement> corapListesi=a101.tumCoraplar.getText().
+    Thread.sleep(2000);
+
+    List<WebElement> tumCoraplarListesi=a101.tumCoraplar;
+    for (int i = 0; i <tumCoraplarListesi.size() ; i++) {
+        System.out.println(tumCoraplarListesi.get(i).getText());
+        if (tumCoraplarListesi.get(i).getText().contains("Siyah")){
+            tumCoraplarListesi.get(i).click();
+        }
+    }
+    Assert.assertTrue(a101.siyahCorapElement.isDisplayed());
+    //Thread.sleep(1000);
+
+    a101.sepeteEkleButton.click();
+    a101.sepetiGoruntuleButton.click();
+    a101.sepetiOnaylaButton.click();
+    Thread.sleep(2000);
+
+    Actions actions=new Actions(Driver.getDriver());
+    actions.sendKeys(Keys.ARROW_DOWN).perform();
+    Thread.sleep(2000);
+    a101.uyeOlmadanDevamEtButton.click();
+
+    Faker faker=new Faker();
+    a101.emailTextBox.click();
+    actions.sendKeys(faker.internet().emailAddress()).perform();
+    Thread.sleep(2000);
+
+    a101.devamEtButton.click();
+    a101.yeniAdresOlusturSekmesi.click();
+    a101.adresBasligiTextBox.click();
+    actions.sendKeys("Ev")
+            .sendKeys(Keys.TAB)
+            .sendKeys(faker.name().name())
+            .sendKeys(Keys.TAB)
+            .sendKeys(faker.name().lastName())
+            .sendKeys(Keys.TAB)
+            .sendKeys(faker.phoneNumber().cellPhone()).perform();
+
+    Thread.sleep(2000);
+    Select select=new Select(a101.ilDropDownElement);
+    select.selectByIndex(2);
+
+    Thread.sleep(2000);
+    Select select1=new Select(a101.ilceDropDownElement);
+    select1.selectByVisibleText("ÇANKAYA");
+
+    Thread.sleep(2000);
+    Select select2=new Select(a101.mahalleDropDownElement);
+    select2.selectByValue("5487");
+
+    a101.adresTextBox.click();
+    actions.sendKeys(faker.address().fullAddress()).perform();
+
+    actions.sendKeys(Keys.ARROW_DOWN).perform();
+    a101.kaydetButton.click();
+    Thread.sleep(2000);
+
+   // a101.scottyKargoRadioButton.click();
+    a101.kaydetVeDevamEtButton.click();
+
+    Assert.assertTrue(a101.odemeSecenekleriText.isDisplayed());
+
+
+
+
+
+
 
 
 
